@@ -132,5 +132,5 @@ EXIT
 ```
 #### Descriere:
 ```
-Functia are ca scop dealocarea resurselor alocate si oprirea programului.
+Functia are ca scop dealocarea resurselor alocate si oprirea programului
 ```
