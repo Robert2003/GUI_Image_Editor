@@ -37,6 +37,10 @@ def open_image():
 
 
 def process_image():
+    deg_rot = rotation_var.get()
+    filt = filter.get()
+    print(deg_rot)
+    print(filt)
     return
 
 
@@ -69,11 +73,12 @@ load_button = Button(root, text="Select image", command=open_image, padx=8, pady
 
 Label(height=2).grid(row=9, column=0)
 
-apply_button = Button(root, text="Apply selection", command=open_image, padx=30, pady=8, bd=2, font=14).grid(row=10, column=0, padx=10, pady=10, sticky="s")
+apply_button = Button(root, text="Apply selection", command=process_image, padx=30, pady=8, bd=2, font=14).grid(row=10, column=0, padx=10, pady=10, sticky="s")
+# apply_button = Button(root, text="Generate histogram", command=process_image, padx=30, pady=8, bd=2, font=14).grid(row=10, column=0, padx=10, pady=10, sticky="s")
 
 root.mainloop()
 
 if os.path.exists("working_img.ppm"):
     os.remove("working_img.ppm")
 
-print("Thanks for using this program:)")
+print("Thanks for using this program :)")
