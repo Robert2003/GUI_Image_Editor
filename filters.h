@@ -13,4 +13,4 @@
 #define MIN 0
 #define MAX 255
 
-void apply(image * img, coordinates selection);
+void apply(image *img, coordinates selection, char *filter_name);

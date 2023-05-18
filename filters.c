@@ -83,22 +83,10 @@ void apply_filter(image *img, coordinates selection, const double *filter,
 }
 
 // Functia care citeste parametrul comenzii APPLY si apeleaza filtrul necesar
-void apply(image *img,    coordinates selection)
+void apply(image *img, coordinates selection, char *filter_name)
 {
-	char filter_name[LENGTH], ch;
 	const double *filter;
 	double multiply = 1.0;
-
-	scanf("%c", &ch);
-	if (ch == '\n') {
-		if (!img->image_loaded) {
-			printf("No image loaded\n");
-			return;
-		}
-		printf("Invalid command\n");
-		return;
-	}
-	scanf("%s", filter_name);
 
 	/*
 	Variabila filter este un pointer spre unul din kernel-uri pentru a avea un

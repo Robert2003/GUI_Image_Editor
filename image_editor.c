@@ -5,7 +5,8 @@ void read_commands(void)
 {
 	image img;
 	coordinates selection;
-	char command[LENGTH], filename[LENGTH], ch;
+	char command[LENGTH], filename[LENGTH], ch, filter[LENGTH];
+	char filter_name[LENGTH];
 	FILE *f;
 	img.image_loaded = false;
 
@@ -17,7 +18,18 @@ void read_commands(void)
 		} else if (!strcmp(command, "SAVE")) {
 			save_image(img);
 		} else if (!strcmp(command, "APPLY")) {
-			apply(&img, selection);
+			scanf("%c", &ch);
+			if (ch == '\n') {
+				if (!img.image_loaded) {
+					printf("No image loaded\n");
+					return;
+				}
+				printf("Invalid command\n");
+				return;
+			}
+			scanf("%s", filter_name);
+
+			apply(&img, selection, filter_name);
 		} else if (!strcmp(command, "CROP")) {
 			crop(&img, &selection);
 		} else if (!strcmp(command, "HISTOGRAM")) {
