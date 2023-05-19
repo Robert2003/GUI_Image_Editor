@@ -160,21 +160,8 @@ void rotate_90_clockwise(image *img, coordinates *selection, int angle)
 /*
 Functia care realizeaza rotirea imaginii la 0, +-90, +-180, +-270, +-360 grade
 */
-void rotate(image *img, coordinates *selection)
+void rotate(image *img, coordinates *selection, int angle)
 {
-	int angle;
-	char ch;
-
-	scanf("%c", &ch);
-	if (ch != ' ') {
-		if (!img->image_loaded) {
-			printf("No image loaded\n");
-			return;
-		}
-		printf("Invalid command\n");
-		return;
-	}
-	scanf("%d", &angle);
 	if (!img->image_loaded) {
 		printf("No image loaded\n");
 		return;

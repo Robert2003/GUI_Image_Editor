@@ -44,19 +44,9 @@ void save_ascii(image img, FILE *f)
 }
 
 // Functia care realizeaza salvarea imaginii dintr-un format in oarecare altul
-void save_image(image img)
+void save_image(image img, char *file_name, char type)
 {
-	char file_name[LENGTH], save_type[LENGTH], ch;
 	FILE *f;
-
-	scanf("%s%c", file_name, &ch);
-	if (ch != '\n') {
-		scanf("%c", &ch);
-		if (ch != '\n') {
-			save_type[0] = ch;
-			scanf("%s", save_type + 1);
-		}
-	}
 
 	if (!img.image_loaded) {
 		printf("No image loaded\n");
@@ -64,17 +54,15 @@ void save_image(image img)
 	}
 
 	// Printez o imagine in format binar
-	if (ch == '\n') {
+	if (type == 'b') {
 		f = fopen(file_name, "wb");
 		save_binary(img, f);
 		fclose(f);
 	} else {
 		// Printez o imagine in format ascii
-		if (!strcmp(save_type, "ascii")) {
-			f = fopen(file_name, "wt");
-			save_ascii(img, f);
-			fclose(f);
-		}
+		f = fopen(file_name, "wt");
+		save_ascii(img, f);
+		fclose(f);
 	}
 	printf("Saved %s\n", file_name);
 }

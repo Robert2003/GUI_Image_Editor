@@ -10,4 +10,4 @@
 
 #define UC unsigned char
 
-void save_image(image img);
+void save_image(image img, char *file_name, char type);
