@@ -13,5 +13,6 @@
 #include "rotate.h"
 #include "histogram.h"
 #include "equalize.h"
+#include "editor_function.h"
 
 #define LENGTH 20
