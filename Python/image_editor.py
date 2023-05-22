@@ -4,11 +4,12 @@ from tkinter import filedialog
 import os
 from tkinter import ttk
 import ctypes
+import customtkinter
 
 label_image = None
 
 function = ctypes.CDLL('../C/imgedit.so').photo
-function.argtypes = [ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p]
+function.argtypes = [ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_char_p]
 
 root = Tk()
 root.attributes("-zoomed", True)
@@ -48,33 +49,40 @@ def open_image():
 
 
 def process_image():
+    global label_image, curr_img
     deg_rot = rotation_var.get()
     filt = filter.get()
-    print(deg_rot)
-    print(path)
-
+    save = "working_img.ppm"
+    save_enc = save.encode('utf-8')
     path_enc = path.encode('utf-8')
     angle = int(deg_rot)
-    filter_name = filt.encode('utf-8')  # Convert filter name to bytes
+    filter_name = filt.encode('utf-8')
 
-    label_image.destroy()
-    # Call the function
-    function(path_enc, angle, filter_name)
-    print(path)
+    function(path_enc, angle, filter_name, save_enc)
+
+    curr_img = Image.open("working_img.ppm")
+    width, height = curr_img.size
+    if width > screen_width * 0.88 or height > screen_height * 0.92:
+        ratio = min(screen_width * 0.88 / width, screen_height * 0.92 / height)
+        new_width = int(width * ratio)
+        new_height = int(height * ratio)
+        curr_img = curr_img.resize((new_width, new_height), Image.ANTIALIAS)
+
+    curr_img = ImageTk.PhotoImage(curr_img)
+    label_image = Label(image=curr_img, bd=10)
+    label_image.grid(row=0, column=1, rowspan=100)
     return
 
 
 ttk.Separator(root, orient=VERTICAL).grid(column=1, row=0, rowspan=100, sticky='sn')
 
-
 load_button = Button(root, text="Select image", command=open_image, padx=10, pady=10, bd=7, font=('Helvetica', 14)).grid(row=0, column=0, padx=40, pady=40)
-
 
 filter = StringVar()
 filter.set("None")
 filters_label = Label(text="Filters", padx=5, pady=15, height=3, anchor=S, font=('Helvetica', 14)).grid(row=1, column=0)
 drop_menu_filters = OptionMenu(root, filter, "EDGE", "BLUR", "SHARPEN", "GAUSSIAN_BLUR")
-drop_menu_filters.config(width = 10, height = 1, pady = 6,font=('Helvetica', 14))
+drop_menu_filters.config(width = 15, height = 1, pady = 6,font=('Helvetica', 14))
 menu = drop_menu_filters.nametowidget(drop_menu_filters.menuname)
 menu.config(font=('Helvetica', 12))
 drop_menu_filters.grid(row=2, column=0)
@@ -98,14 +106,13 @@ angle_270_radio = Radiobutton(root, text="Rotate 270°", variable=rotation_var, 
 angle_270_radio.grid(row=8, column=0, padx=6, pady=4)
 
 
-
 Label(height=4).grid(row=9, column=0)
 
 apply_button = Button(root, text="Apply selection", command=process_image, padx=30, pady=8, bd=2, font=('Helvetica', 14)).grid(row=10, column=0, padx=10, pady=10, sticky="s")
 
 root.mainloop()
 
-if os.path.exists("working_img.ppm"):
-    os.remove("working_img.ppm")
+# if os.path.exists("working_img.ppm"):
+#     os.remove("working_img.ppm")
 
 print("Thanks for using this program :)")
