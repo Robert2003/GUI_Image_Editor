@@ -64,24 +64,17 @@ def open_image():
     
     curr_img.save("../Images/working_img.ppm")
     curr_img = ctk.CTkImage(dark_image=Image.open("../Images/working_img.ppm"), size=(new_width, new_height))
-    # curr_img = ImageTk.PhotoImage(curr_img)
     label_image = ctk.CTkLabel(root, image=curr_img, text="")
     label_image.grid(row=0, column=1, rowspan=100)
     
 def save_image():
-    save_path = ctk.filedialog.asksaveasfilename(defaultextension=".jpg")
+    global curr_img, label_image
+    # label_image.destroy()
+    saved_image = Image.open("../Images/working_img.ppm")
+    save_path = filedialog.asksaveasfilename(defaultextension=".jpg")
     if save_path:
-        curr_img.save(save_path)
+        saved_image.save(save_path)
         print("Image saved successfully.")
-
-    # f = ctk.filedialog.asksaveasfile(mode='w', defaultextension=".jpg")
-    # if f is None:
-    #     return
-    # text2save = str("idk")
-    # f.write(text2save)
-    # f.close()
-
-
 
 def process_image():
     global label_image, curr_img
@@ -94,7 +87,7 @@ def process_image():
     filter_name = filt.encode('utf-8')
 
     function(path_enc, angle, filter_name, save_enc)
-    label_image.destroy()
+    
 
     curr_img = Image.open("../Images/working_img.ppm")
     width, height = curr_img.size
@@ -106,7 +99,8 @@ def process_image():
         curr_img = curr_img.resize((new_width, new_height), Image.ANTIALIAS)
 
     curr_img.save("../Images/working_img.ppm")
-    curr_img = ctk.CTkImage(dark_image=Image.open("../Images/working_img.ppm"), size=(new_height, new_height))
+    curr_img = ctk.CTkImage(dark_image=Image.open("../Images/working_img.ppm"), size=(new_width, new_height))
+    label_image.destroy()
     label_image = ctk.CTkLabel(root, image=curr_img, text="")
     label_image.grid(row=0, column=1, rowspan=100)
     return
