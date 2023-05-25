@@ -3,6 +3,6 @@
 
 int main(void)
 {
-	photo("../Python/working_img.ppm", 180, "SHARPEN", "../Python/saved_img.ppm");
+	photo("../Python/img1.ppm", 180, "SHARPEN", "../Python/saved_img1.ppm");
 	return 0;
 }

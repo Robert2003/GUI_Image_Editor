@@ -9,10 +9,7 @@
 #include "save.h"
 #include "memory_manipulation.h"
 #include "filters.h"
-#include "crop.h"
 #include "rotate.h"
-#include "histogram.h"
-#include "equalize.h"
 #include "editor_function.h"
 
 #define LENGTH 20
