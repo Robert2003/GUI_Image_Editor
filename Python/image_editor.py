@@ -73,7 +73,7 @@ def open_image():
 def save_image():
     global curr_img, label_image
     saved_image = Image.open("../Images/working_img.ppm")
-    save_path = filedialog.asksaveasfilename(initialdir="../Images", title="Select the folder to save the photo", filetypes=(("PPM", "*.ppm"), ("PNG", "*.png"), ("JPG", "*.jpg")))
+    save_path = filedialog.asksaveasfilename(initialdir="../Images", title="Select the folder to save the photo", filetypes=(("JPG", "*.jpg"), ("PNG", "*.png"), ("PPM", "*.ppm")))
     if save_path:
         saved_image.save(save_path)
         print("Image saved successfully.")
@@ -153,7 +153,7 @@ save_button.grid(row=11, column=0, padx=60, pady=40)
 
 # Theme switch
 switch_var = ctk.IntVar(value = 1)
-switch = ctk.CTkSwitch(root, text="", command=switch_event, variable=switch_var, onvalue=1, offvalue=0, switch_height=30, switch_width=65).grid(row=12, column=0, padx=40, pady=25)
+switch = ctk.CTkSwitch(root, text="", command=switch_event, variable=switch_var, onvalue=1, offvalue=0, switch_height=30, switch_width=60).grid(row=12, column=0, padx=30, pady=40)
 
 # Initial frame of the image
 frame = ctk.CTkFrame(root, width=screen_width * 0.8, height= screen_height * 0.92)
