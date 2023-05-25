@@ -1,3 +1,4 @@
+/* Copyright 2023 <Ⓒ Andrei Pirlea and Robert-Mihai Damian - 312CA 2022-2023>*/
 #include "my_library.h"
 
 void photo(char *filename, int angle, char *filter_name, char *save_path)

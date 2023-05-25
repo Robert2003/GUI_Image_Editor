@@ -1,5 +1,6 @@
-// Copyright Damian Mihai-Robert 312CAb 2022-2023
-#pragma once
+/* Copyright 2023 <Ⓒ Andrei Pirlea and Robert-Mihai Damian - 312CA 2022-2023>*/
+#ifndef MY_LIBRARY_H
+#define MY_LIBRARY_H
 
 #include <stdbool.h>
 
@@ -13,3 +14,5 @@
 #include "editor_function.h"
 
 #define LENGTH 20
+
+#endif // MY_LIBRARY_H

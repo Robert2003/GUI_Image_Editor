@@ -1,4 +1,4 @@
-// Copyright Damian Mihai-Robert 312CAb 2022-2023
+/* Copyright 2023 <Ⓒ Andrei Pirlea and Robert-Mihai Damian - 312CA 2022-2023>*/
 #include "selection.h"
 
 // Functia swap care inverseaza 2 variabile, indiferent de tipul de data

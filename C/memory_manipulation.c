@@ -1,4 +1,4 @@
-// Copyright Damian Mihai-Robert 312CAb 2022-2023
+/* Copyright 2023 <Ⓒ Andrei Pirlea and Robert-Mihai Damian - 312CA 2022-2023>*/
 #include "memory_manipulation.h"
 
 // Functie care aloca memorie pentru o matrice ascii si returneaza adresa ei

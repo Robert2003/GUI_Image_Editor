@@ -15,8 +15,7 @@ function.argtypes = [ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_ch
 mode = 1
 font_large = ("Roboto-Regular", 28)
 font_medium = ("Roboto-Regular", 22)
-font_small = ("Roboto-Regular", 18)
-
+font_small = ("Roboto-Regular", 20)
 
 root = ctk.CTk()
 root.attributes("-zoomed", True)
@@ -25,14 +24,9 @@ root.title('Image Editor')
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
-
 ctk.set_default_color_theme("blue")
 
-if mode == 1:
-    ctk.set_appearance_mode("dark")
-else:
-    ctk.set_appearance_mode("light")
-
+label_image = None
 
 # Functions
 def switch_event():
@@ -63,6 +57,10 @@ def open_image():
     new_height = int(height * ratio)
     curr_img = curr_img.resize((new_width, new_height), Image.ANTIALIAS)
     
+
+    if label_image != None:
+        label_image.destroy()
+
     curr_img.save("../Images/working_img.ppm")
     curr_img = ctk.CTkImage(dark_image=Image.open("../Images/working_img.ppm"), size=(new_width, new_height))
     label_image = ctk.CTkLabel(root, image=curr_img, text="")
@@ -160,8 +158,5 @@ frame = ctk.CTkFrame(root, width=screen_width * 0.8, height= screen_height * 0.9
 frame.grid(row=0, column=1, rowspan=13, pady = 10)
 
 root.mainloop()
-
-# if os.path.exists("working_img.ppm"):
-#     os.remove("working_img.ppm")
 
 print("Thanks for using this program :)")

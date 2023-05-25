@@ -1,5 +1,6 @@
-// Copyright Damian Mihai-Robert 312CAb 2022-2023
-#pragma once
+/* Copyright 2023 <Ⓒ Andrei Pirlea and Robert-Mihai Damian - 312CA 2022-2023>*/
+#ifndef STRUCTURES_H
+#define STRUCTURES_H
 
 // Definirea unui pixel RGB
 typedef struct {
@@ -33,3 +34,5 @@ typedef struct {
 	int width;
 	int height;
 } coordinates;
+
+#endif // STRUCTURES_H
