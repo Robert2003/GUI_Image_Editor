@@ -1,13 +1,9 @@
-#### Copyright Damian Mihai-Robert 312CAb 2022-2023
+#### Copyright Damian Mihai-Robert & Pirlea Andrei 312CAb 2022-2023
 <br>
 
 ## Programul reprezinta un editor de imagini, care poate realiza:
     -deschiderea unei imagini
-    -selectie unei zone de lucru
-    -histograma imaginii
-    -egalizarea imaginii
     -rotirea imaginii/selectiei
-    -decuparea selectiei
     -aplicarea unor filtre
     -salvarea imaginii
     -oprirea programului
@@ -27,50 +23,6 @@ citeste aceste date.
 ```
 
 
-# Operatia SELECT
-#### Utilizare:
-```
-1. SELECT <x1> <y1> <x2> <y2>
-2. SELECT ALL
-```
-#### Descriere:
-```
-1.  Functia primeste 4 parametri, care delimiteaza dreptunghiul/patratul
-  determinat de coordonatele (y1, x1) - coltul stanga-sus si (y2, x2) - coltul
-  dreapta-jos. Daca selectia se afla in interiorul imaginii, zona de lucru se
-  va schimba la acele coordonate.
-2.  Functia selecteaza zona de lucru ca fiind toata imaginea.
-```
-
-
-# Operatia HISTOGRAM
-#### Utilizare:
-```
-HISTOGRAM <x> <y>
-```
-#### Descriere:
-```
-Daca imaginea este de tip grayscale, functia afiseaza histograma intregii
-imagini, folosind maxim y intervale si x stelute. Cele 256 de valori posibil
-ale unui pixel sunt impartite in y grupe de cate (256 / y) elemente, numarul
-de aparitii ale acestora cumulandu-se. Pentru a calcula numarul de stelute
-relativ la x, se aplica formula: 
-    nr_stelute = (frecventa_valoare / max_frecventa) * x.
-```
-
-
-# Operatia EQUALIZE
-#### Utilizare:
-```
-EQUALIZE
-```
-#### Descriere:
-```
-Functia va realiza egalizarea imeginilor grayscale, pentru imaginile cu o
-expunere incorecta prin care se va calibra contrastul.
-```
-
-
 # Operatia ROTATE
 #### Utilizare:
 ```
@@ -83,17 +35,6 @@ Functia are 2 scopuri:
       (multiplu de 90).
     2.  Daca nu toata imaginea este selectata, rotirea se va realiza doar daca
       zona selectata este un patrat.
-```
-
-
-# Operatia CROP
-#### Utilizare:
-```
-CROP
-```
-#### Descriere:
-```
-Functia va inlocui in memorie imaginea intreaga cu selectia curenta.
 ```
 
 
