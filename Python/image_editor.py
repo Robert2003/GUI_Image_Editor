@@ -1,10 +1,9 @@
 # Copyright 2023 <Ⓒ Andrei Pirlea and Robert Damian - 312CA 2022-2023>
 
 from tkinter import *
-from PIL import ImageTk, Image
+from PIL import Image
 from tkinter import filedialog
 import os
-from tkinter import ttk
 import ctypes
 import customtkinter as ctk
 
@@ -83,13 +82,13 @@ def process_image():
     filt = filter.get()
     angle = int(deg_rot)
     save = "../Images/working_img.ppm"
+    path = "../Images/working_img.ppm"
     save_enc = save.encode('utf-8')
     path_enc = path.encode('utf-8')
     filter_name = filt.encode('utf-8')
 
     # Call the C function
     function(path_enc, angle, filter_name, save_enc)
-    
 
     curr_img = Image.open("../Images/working_img.ppm")
     width, height = curr_img.size
@@ -99,9 +98,12 @@ def process_image():
     new_height = int(height * ratio)
     curr_img = curr_img.resize((new_width, new_height), Image.ANTIALIAS)
 
+    if label_image != None:
+        label_image.destroy()
+    
     curr_img.save("../Images/working_img.ppm")
+    
     curr_img = ctk.CTkImage(dark_image=Image.open("../Images/working_img.ppm"), size=(new_width, new_height))
-    label_image.destroy()
     label_image = ctk.CTkLabel(root, image=curr_img, text="")
     label_image.grid(row=0, column=1, rowspan=13, pady = 10)
 

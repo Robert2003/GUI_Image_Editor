@@ -1,4 +1,4 @@
-# Copyright Damian Mihai-Robert 312CAb 2022-2023
+# Copyright 2023 <Ⓒ Andrei Pirlea and Robert-Mihai Damian - 312CA 2022-2023>
 
 CC=gcc
 CFLAGS=-Wall -Wextra -std=c99
@@ -9,9 +9,6 @@ build: $(TARGETS)
 
 image_editor: image_editor.c
 	$(CC) $(CFLAGS) *.c -o image_editor
-
-pack:
-	zip -FSr 312CA_DamianMihai-Robert_Tema3.zip *.c *.h Makefile README
 
 clean:
 	rm -f $(TARGETS)
