@@ -109,8 +109,9 @@ def process_image():
 
 
 # Load button
-load_button = ctk.CTkButton(root, text="Select Image", command=open_image, font=font_large, height=55, width=225).grid(row=0, column=0, padx=60, pady=40)
-
+load_button = ctk.CTkButton(root, text="Select Image", command=open_image, font=font_large, height=55, width=225)
+load_button.grid(row=0, column=0, padx=60, pady=40)
+root.bind("<Control-o>", lambda event: load_button.invoke())
 
 # Filter menu
 filter = StringVar()
@@ -150,6 +151,7 @@ apply_button = ctk.CTkButton(root, text="Apply Selection", command=process_image
 # Save button
 save_button = ctk.CTkButton(root, text="Save Image", command=save_image, font=font_large, height=55, width=225)
 save_button.grid(row=11, column=0, padx=60, pady=40)
+root.bind("<Control-s>", lambda event: save_button.invoke())
 
 # Theme switch
 switch_var = ctk.IntVar(value = 1)
